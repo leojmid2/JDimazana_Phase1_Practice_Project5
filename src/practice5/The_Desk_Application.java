@@ -95,7 +95,12 @@ public class The_Desk_Application {
 	    
 	    private static void searchExpenses(ArrayList<Integer> arrayList, int input) {
 	        int leng = arrayList.size();
-	        //complete the code
+	        quicksort(arrayList,0,leng-1);
+	        if (binarySearch(arrayList, input)!=-1){
+	            System.out.println("Expense "+ input + " Found\n");
+	        }
+	        else
+	            System.out.println("Expense "+ input + " not Found\n");
 	    }
 	    
 	    private static void sortExpenses(ArrayList<Integer> arrayList) {
@@ -104,6 +109,26 @@ public class The_Desk_Application {
 	        System.out.println(arrayList.toString()+"\n");
 	    }
 	    
+	    
+	    public static int binarySearch(ArrayList<Integer> list, int input) {
+	        int start = 0;
+	        int end = list.size();
+
+	        while (start < end) {
+	            int midpoint = (start + end) / 2;
+	            if (list.get(midpoint) == input) {
+	                return midpoint;
+	            }
+	            else if (list.get(midpoint) < input) {
+	                start = midpoint + 1;
+	            }
+	            else {
+	                end = midpoint;
+	            }
+	        }
+	        return -1;
+	    	
+	    }
 	    
 		public static void quicksort(ArrayList<Integer> data, int start, int end) {
 			if (start < end) {
